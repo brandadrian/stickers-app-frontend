@@ -1,0 +1,6 @@
+<h1>Stickers App</h1>
+
+<h3 *ngFor="let sticker of stickersData">
+  <b>{{sticker.name}}</b>
+  <button (click)="deleteSticker(sticker.id)">Delete</button>
+</h3>
