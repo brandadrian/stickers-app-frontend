@@ -9,18 +9,28 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'stickers-app';
   apiUrl = 'https://stickers-app-backend.azurewebsites.net/api/';
-  stickersData:any = []; 
+  stickersData:any = [];
+  stickerName: string = '';
+  stickerDescription: string = '';
+  stickerUserName: string = '';
 
   constructor(private httpClient:HttpClient) {
-
   }
 
   ngOnInit() {
     this.loadData();
   }
 
-  addSticker(id:any) {
-    this.httpClient.delete(this.apiUrl + 'stickersapp/stickers?id=' + id).subscribe(response => {
+  addSticker() {
+    const data = {
+      name: this.stickerName,
+      description: this.stickerDescription,
+      userName: this.stickerUserName
+    };
+
+    console.warn(JSON.stringify(data));
+
+    this.httpClient.post(this.apiUrl + 'stickersapp/stickers', data).subscribe(response => {
       console.warn(JSON.stringify(response));
       this.loadData();
     })

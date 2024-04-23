@@ -1,6 +1,43 @@
-<h1>Stickers App</h1>
+<mat-toolbar>
+  <span>Stickers App</span>
+</mat-toolbar>
 
-<h3 *ngFor="let sticker of stickersData">
-  <b>{{sticker.name}}</b>
-  <button (click)="deleteSticker(sticker.id)">Delete</button>
-</h3>
+<div class="space"></div>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="stickerName" name="stickerName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Beschreibung</mat-label>
+    <input matInput [(ngModel)]="stickerDescription" name="stickerDescription">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Benutzername</mat-label>
+    <input matInput [(ngModel)]="stickerUserName" name="stickerUserName">
+  </mat-form-field>
+</form>
+<button mat-raised-button color="primary" (click)="addSticker()">Hinzufügen</button>
+
+<div class="space"></div>
+<div class="space"></div>
+
+<span *ngFor="let sticker of stickersData">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <h2>{{sticker.name}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <p><b>Beschreibung</b></p>
+      <p>{{sticker.description}}</p>
+      <p><b>Benutzername</b></p>
+      <p>{{sticker.userName}}</p>
+      <div class="space"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" (click)="deleteSticker(sticker.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="space"></div>
+</span>
