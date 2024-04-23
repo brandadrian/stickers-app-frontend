@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'stickers-app';
-  apiUrl = 'http://localhost:5050/api/';
+  apiUrl = 'https://stickers-app-backend.azurewebsites.net/api/';
   stickersData:any = []; 
 
   constructor(private httpClient:HttpClient) {
